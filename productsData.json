@@ -1,0 +1,22 @@
+[	
+	{
+		"name": "Teaglos",
+		"requirments":{
+			"flower water": 2,
+			"tea bag": 1,
+			"beet": 1
+		},
+		"sell price": 14
+	},
+	
+	{
+		"name": "MintTeaglos",
+		"requirments":{
+			"flower water": 3,
+			"tea bag": 1,
+			"beet": 1
+		},
+		"sell price": 16
+	}
+	
+]

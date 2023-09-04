@@ -1,0 +1,17 @@
+[
+    {
+        "name": "tea bag",
+        "photo path": "/home/deek/Downloads/pngegg.png",
+        "quantity": 5
+    },
+    {
+        "name": "flower water",
+        "photo path": "/home/deek/Downloads/pngegg(2).png",
+        "quantity": 0
+    },
+    {
+        "name": "beet",
+        "photo path": "/home/deek/Downloads/pngegg(1).png",
+        "quantity": 2
+    }
+]
