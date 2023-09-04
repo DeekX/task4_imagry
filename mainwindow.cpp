@@ -113,6 +113,7 @@ void MainWindow::onButtonClicked() {
 
     OurProducts p;
     p.setModal(true);
+    hide();
     p.exec();
 }
 

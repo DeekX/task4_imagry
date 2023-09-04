@@ -20,8 +20,10 @@ private:
     Ui::MainWindow *ui;
 
 public slots:
+
     void onButtonClicked();
     void displayAvailableIngredients(const QString &path);
+
 };
 
 

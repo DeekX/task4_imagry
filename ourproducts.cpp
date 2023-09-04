@@ -4,6 +4,7 @@
 #include "shared.h"
 #include <string.h>
 #include <QJsonArray>
+#include "mainwindow.h"
 
 struct Product {
     QString name;
@@ -51,18 +52,21 @@ OurProducts::OurProducts(QWidget *parent) :
     ui(new Ui::OurProducts)
 {
     ui->setupUi(this);
-    //qDebug()<<availabelIngredients.size();
+    setFixedSize(1200, 500);  // Set the width to 1200 and height to 800
     int current = 100;
+    QPushButton *button = new QPushButton("back", this);
+    button->setGeometry(10, 50, 300, 50);
+    connect(button, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
     QList<Product> products = readProductsFromJson("/home/deek/task4/productsData.json");
     for (const Product &product : products) {
         QLabel *name = new QLabel(this);
         name->setText(product.name);
-        name->setGeometry(QRect(50, current - 90, 200, 50));
+        name->setGeometry(QRect(50, current, 200, 50));
         name->show();
 
         QLabel *price = new QLabel(this);
         price->setText(QString::number(product.sellPrice));
-        price->setGeometry(QRect(330, current - 90, 200, 50));
+        price->setGeometry(QRect(330, current, 200, 50));
         price->show();
 
         current+=200;
@@ -70,13 +74,13 @@ OurProducts::OurProducts(QWidget *parent) :
         for (auto it = product.requirements.begin(); it != product.requirements.end(); ++it) {
             QLabel *req = new QLabel(this);
             req->setText(it.key());
-            req->setGeometry(QRect(530, cu, 200, 50));
+            req->setGeometry(QRect(530, cu+70, 200, 50));
             req->show();
             qDebug() << it.key() << ":" << it.value();
             cu-=45;
         }
             QPushButton *buyButton = new QPushButton("Buy", this);
-        buyButton->setGeometry(QRect(930,current-250,150,50));
+        buyButton->setGeometry(QRect(930,current-170,150,50));
         connect(buyButton, &QPushButton::clicked, [this, product](){
             buyProduct(product.name);
         });
@@ -180,6 +184,12 @@ int OurProducts::getQuantityOfIngredient(const QString &ingredientName, const QJ
         }
     }
     return 0;
+}
+
+void OurProducts::onButtonClicked(){
+    MainWindow *m = new MainWindow();
+    hide();
+    m->show();
 }
 
 OurProducts::~OurProducts()

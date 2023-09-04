@@ -19,6 +19,7 @@ private:
     Ui::OurProducts *ui;
 
 public slots:
+    void onButtonClicked();
     void buyProduct(const QString &productName);
     QJsonArray getAvailableIngredients();
     int getQuantityOfIngredient(const QString &ingredientName, const QJsonArray &ingredients);
